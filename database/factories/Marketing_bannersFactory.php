@@ -3,13 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\New_categories;
-
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class NewsFactory extends Factory
+class Marketing_bannersFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,12 +17,7 @@ class NewsFactory extends Factory
     public function definition(): array
     {
         return [
-            'title'=> $this->faker->title(),
-            'description'=> $this->faker->text(),
             'image'=> $this->faker->imageUrl(),
-            'news_category_id'=> function(){
-                return New_categories::inRandomOrder()->first()->id;
-            },
         ];
     }
 }

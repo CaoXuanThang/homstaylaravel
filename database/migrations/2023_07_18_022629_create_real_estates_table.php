@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('real_estates', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->bigInteger('price');
+            $table->integer('area');
+            $table->string('address');
+            $table->unsignedBigInteger('real_estate_category_id');
             $table->timestamps();
         });
     }
