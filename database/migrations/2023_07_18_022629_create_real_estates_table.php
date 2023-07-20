@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('price');
             $table->integer('area');
             $table->string('address');
-            $table->unsignedBigInteger('real_estate_category_id');
+            $table->integer('real_estate_category_id');
             $table->timestamps();
         });
     }
