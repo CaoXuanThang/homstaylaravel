@@ -15,9 +15,9 @@ class Auth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // if (auth()->user()->role == 1) {
+        if (auth()->user()->role == 1) {
             return $next($request);
-        // }
-        // return abort(403, 'Bạn không có quyền truy cập trang này');
+        }
+        return abort(403, 'Bạn không có quyền truy cập trang này');
     }
 }

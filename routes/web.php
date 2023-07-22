@@ -24,8 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {
+    
     Route::get('/', [MainController::class, 'index'])->name('main');
 
     // real_estate_category

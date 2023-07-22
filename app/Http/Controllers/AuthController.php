@@ -19,6 +19,9 @@ class AuthController extends Controller
 
         if (auth()->attempt($credentials)) {
             // Đăng nhập thành công
+            if(Auth::user()->role == 1){
+                return redirect()->route('main')->with('success', 'Đăng nhập thành công!'); // Chuyển hướng đến trang dashboard sau khi đăng nhập thành công
+            }
             return redirect()->route('home')->with('success', 'Đăng nhập thành công!'); // Chuyển hướng đến trang dashboard sau khi đăng nhập thành công
         }
 

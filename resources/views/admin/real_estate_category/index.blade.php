@@ -56,7 +56,7 @@
                         <a href="{{ route('real_estate_category.showupdate', $item->id) }}"><button type="button"
                                 class="btn btn-primary">Edit</button></a>
                         <a href="{{ route('real_estate_category.delete', $item->id) }}"><button type="button"
-                                class="btn btn-primary">Xóa</button></a>
+                                class="btn btn-danger">Xóa</button></a>
                     </td>
                 </tr>
             @endforeach

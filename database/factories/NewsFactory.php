@@ -22,9 +22,7 @@ class NewsFactory extends Factory
             'title'=> $this->faker->title(),
             'description'=> $this->faker->text(),
             'image'=> $this->faker->imageUrl(),
-            'news_category_id'=> function(){
-                return New_categories::inRandomOrder()->first()->id;
-            },
+            'news_category_id'=> $this->faker->numberBetween(1,10),
         ];
     }
 }
