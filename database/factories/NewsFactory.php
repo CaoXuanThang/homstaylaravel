@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 use App\Models\New_categories;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 
 /**
@@ -20,7 +21,7 @@ class NewsFactory extends Factory
     {
         return [
             'title'=> $this->faker->title(),
-            'description'=> $this->faker->text(),
+            'description' => Str::limit($this->faker->sentence(), 100), // Giới hạn độ dài mô tả thành 200 ký tự
             'image'=> $this->faker->imageUrl(),
             'news_category_id'=> $this->faker->numberBetween(1,10),
         ];

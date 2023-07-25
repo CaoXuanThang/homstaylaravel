@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\Real_estate_categoryController;
 use App\Http\Controllers\admin\Real_estateController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Product_real_estateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +23,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/product',[Product_real_estateController::class,'index'])->name('product');
+Route::get('/product/{id}',[Product_real_estateController::class,'property'])->name('property');
 
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function () {
-    
     Route::get('/', [MainController::class, 'index'])->name('main');
 
     // real_estate_category
@@ -45,10 +47,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function (
     Route::post('/new_category/update/{id}', [New_categoryController::class, 'update'])->name('new_category.update');
     Route::get('/new_category/delete/{id}', [New_categoryController::class, 'delete'])->name('new_category.delete');
 
+    // real_estate 
+    Route::get('/real_estate', [Real_estateController::class, 'index'])->name('real_estate.list');
+    Route::get('/real_estate/create', [Real_estateController::class, 'show'])->name('real_estate.show');
+    Route::post('/real_estate/create', [Real_estateController::class, 'create'])->name('real_estate.create');
+    Route::get('/real_estate/update/{id}', [Real_estateController::class, 'showupdate'])->name('real_estate.showupdate');
+    Route::post('/real_estate/update/{id}', [Real_estateController::class, 'update'])->name('real_estate.update');
+    Route::get('/real_estate/delete/{id}', [Real_estateController::class, 'delete'])->name('real_estate.delete');
+
+    // new 
+    Route::get('/new', [NewController::class, 'index'])->name('new.list');
+    Route::get('/new/create', [NewController::class, 'show'])->name('new.show');
+    Route::post('/new/create', [NewController::class, 'create'])->name('new.create');
+    Route::get('/new/update/{id}', [NewController::class, 'showupdate'])->name('new.showupdate');
+    Route::post('/new/update/{id}', [NewController::class, 'update'])->name('new.update');
+    Route::get('/new/delete/{id}', [NewController::class, 'delete'])->name('new.delete');
 
     Route::get('/marketing_banner', [Marketing_bannerController::class, 'index'])->name('marketing_banner');
-    Route::get('/new', [NewController::class, 'index'])->name('new');
-    Route::get('/real_estate', [Real_estateController::class, 'index'])->name('real_estate');
 });
 
 

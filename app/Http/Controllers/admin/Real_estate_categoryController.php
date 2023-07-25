@@ -13,7 +13,7 @@ class Real_estate_categoryController extends Controller
     {
         $real_estate_categories = Real_estate_categories::select('*')
         ->whereNull('deleted_at')
-        ->get();
+        ->paginate(5);
         return view('admin.real_estate_category.index', compact('real_estate_categories'));
     }
 

@@ -20,7 +20,9 @@ class Real_estatesFactory extends Factory
             'name' => $this->faker->name(),       
             'description'=> $this->faker->text(),
             'price' => $this->faker->numberBetween(100000, 1000000),
-            'area' => $this->faker->numberBetween(50, 10000),
+            'image'=> $this->faker->imageUrl(),
+            'beds'=>$this->faker->numberBetween(1, 10),
+            'baths'=>$this->faker->numberBetween(1, 10),
             'address' => $this->faker->address(),
             'real_estate_category_id' => function () {
                 return Real_estate_categories::inRandomOrder()->first()->id;

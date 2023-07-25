@@ -15,4 +15,8 @@ class New_categories extends Model
         'name',
         'description',
     ];
+
+    public function news(){
+        return $this->hasMany(News::class);
+    }
 }

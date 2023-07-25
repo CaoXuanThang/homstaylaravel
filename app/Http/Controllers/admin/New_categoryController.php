@@ -15,7 +15,7 @@ class New_categoryController extends Controller
     {
         $new_categories = New_categories::select('*')
         ->whereNull('deleted_at')
-        ->get();
+        ->paginate(5);
         return view('admin.new_category.index', compact('new_categories'));
     }
 
