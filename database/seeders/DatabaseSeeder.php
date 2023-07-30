@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Designers;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,8 +26,8 @@ class DatabaseSeeder extends Seeder
             Marketing_bannersSeeder::class,
             Real_estate_categoriesSeeder::class,
             Real_estatesSeeder::class,
-            UsersSeeder::class
-
+            UsersSeeder::class,
+            DesignersSeeder::class
         ]);
     }
 }

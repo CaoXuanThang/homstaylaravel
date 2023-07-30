@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\admin\ContactController;
+use App\Http\Controllers\admin\DesignerController;
 use App\Http\Controllers\admin\MainController;
 use App\Http\Controllers\admin\Marketing_bannerController;
 use App\Http\Controllers\admin\New_categoryController;
@@ -7,6 +10,7 @@ use App\Http\Controllers\admin\NewController;
 use App\Http\Controllers\admin\Real_estate_categoryController;
 use App\Http\Controllers\admin\Real_estateController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactclientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Product_real_estateController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +29,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product',[Product_real_estateController::class,'index'])->name('product');
 Route::get('/product/{id}',[Product_real_estateController::class,'property'])->name('property');
+Route::get('/about',[AboutController::class,'index'])->name('about');
+Route::get('/contact',[ContactclientController::class,'index'])->name('client.contact');
+Route::post('/contact',[ContactclientController::class,'create'])->name('client.contact.create');
+
+
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
 
@@ -62,8 +71,33 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     Route::get('/new/update/{id}', [NewController::class, 'showupdate'])->name('new.showupdate');
     Route::post('/new/update/{id}', [NewController::class, 'update'])->name('new.update');
     Route::get('/new/delete/{id}', [NewController::class, 'delete'])->name('new.delete');
+    // marketing banners
 
-    Route::get('/marketing_banner', [Marketing_bannerController::class, 'index'])->name('marketing_banner');
+    Route::get('/marketing_banner', [Marketing_bannerController::class, 'index'])->name('marketing_banner.list');
+    Route::get('/marketing_banner/create', [Marketing_bannerController::class, 'show'])->name('marketing_banner.show');
+    Route::post('/marketing_banner/create', [Marketing_bannerController::class, 'create'])->name('marketing_banner.create');
+    Route::get('/marketing_banner/update/{id}', [Marketing_bannerController::class, 'showupdate'])->name('marketing_banner.showupdate');
+    Route::post('/marketing_banner/update/{id}', [Marketing_bannerController::class, 'update'])->name('marketing_banner.update');
+    Route::get('/marketing_banner/delete/{id}', [Marketing_bannerController::class, 'delete'])->name('marketing_banner.delete');
+
+    // contact
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact.list');
+    Route::get('/contact/create', [ContactController::class, 'show'])->name('contact.show');
+    Route::post('/contact/create', [ContactController::class, 'create'])->name('contact.create');
+    Route::get('/contact/update/{id}', [ContactController::class, 'showupdate'])->name('contact.showupdate');
+    Route::post('/contact/update/{id}', [ContactController::class, 'update'])->name('contact.update');
+    Route::get('/contact/delete/{id}', [ContactController::class, 'delete'])->name('contact.delete');
+    // designer
+
+    Route::get('/designer', [DesignerController::class, 'index'])->name('designer.list');
+    Route::get('/designer/detail/{id}', [DesignerController::class, 'detail'])->name('designer.detail');
+    Route::get('/designer/create', [DesignerController::class, 'show'])->name('designer.show');
+    Route::post('/designer/create', [DesignerController::class, 'create'])->name('designer.create');
+    Route::get('/designer/update/{id}', [DesignerController::class, 'showupdate'])->name('designer.showupdate');
+    Route::post('/designer/update/{id}', [DesignerController::class, 'update'])->name('designer.update');
+    Route::get('/designer/delete/{id}', [DesignerController::class, 'delete'])->name('designer.delete');
+
+
 });
 
 

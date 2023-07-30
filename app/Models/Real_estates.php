@@ -26,4 +26,10 @@ class Real_estates extends Model
     {
         return $this->belongsTo(Real_estate_categories::class);
     }
+    public function contact(){
+        return $this->belongsTo(Contact::class);
+    }
+    public function designer(){
+        return $this->belongsTo(Designers::class);
+    }
 }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('beds');
             $table->string('address');
             $table->integer('real_estate_category_id');
+            $table->integer('designer_id');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -28,13 +28,14 @@
         <div class="container">
             <div class="menu-bg-wrap">
                 <div class="site-navigation">
-                    <a href="index.html" class="logo m-0 float-start">Property</a>
+                    <a href="{{route('home')}}" class="logo m-0 float-start">Property</a>
 
                     <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
                         <li class=""><a href="{{route('home')}}">Home</a></li>
                         <li><a href="{{route('product')}}">Product</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="{{route('product')}}">New</a></li>
+                        <li><a href="{{route('about')}}">About</a></li>
+                        <li><a href="{{route('client.contact')}}">Contact Us</a></li>
                         <li class="has-children">
                             <a href="#">Profile</a>
                             <ul class="dropdown">
@@ -66,7 +67,7 @@
 
     @yield('nav')
     </div>
-
+    @include('custom.error')
     @yield('content')
 
     <div class="site-footer">
@@ -164,6 +165,7 @@
     <script src="{{ asset('asset/js/tiny-slider.js') }}"></script>
     <script src="{{ asset('asset/js/aos.js') }}"></script>
     <script src="{{ asset('asset/js/custom.js') }}"></script>
+    
 </body>
 
 </html>

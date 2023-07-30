@@ -10,9 +10,9 @@
                     <a href="{{ route('real_estate_category.list') }}" class="nav-item nav-link "><i class="fa fa-laptop me-2"></i>Real category</a>
                     <a href="{{ route('real_estate.list') }}" class="nav-item nav-link "><i class="fa fa-th me-2"></i>Real estate</a>
                     <a href="{{ route('new_category.list') }}" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>NewCategory</a>
-                    <a href="{{ route('new.list') }}" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>New</a>
-                    <a href="{{ route('marketing_banner.list') }}" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>marketing Banner</a>
-                    <a href="{{ route('contact.list') }}" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i>Contact</a>
+                    <a href="{{ route('new.list') }}" class="nav-item nav-link "><i class="fa fa-table me-2"></i>New</a>
+                    <a href="{{ route('marketing_banner.list') }}" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i>marketing Banner</a>
+                    <a href="{{ route('contact.list') }}" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Contact</a>
                     <a href="{{ route('designer.list') }}" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i> Designer</a>
                 </div>
                 </ul>
@@ -21,39 +21,37 @@
     </div>
 @endsection
 @section('content')
-<a href="{{ route('new.show') }}" class="btn btn-primary">Add</a>
 <table class="table table-striped table-inverse table-responsive">
     <thead class="thead-inverse">
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Image</th>
-            <th>Description</th>
-            <th>New_category</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Status</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($new as $item)
+        @foreach ($contact as $item)
             <tr>
                 <td>{{ $item->id }}</td>
-                <td>{{ $item->title }}</td>
-                <td><img src="{{ $item->image ? '' . Storage::url($item->image) : '' }}" style="width: 100px; height: 100px" /></td>
-                <td>{{ $item->description }}</td>
-                <td>{{$item->news_category->name}}</td>
+                <td>{{ $item->name }}</td>
+                <td>{{ $item->email }}</td>
+                <td>{{ $item->phone }}</td>
+                <td>{{ $item->status == 1 ? "Đã duyệt" : "Chờ duyệt" }} </td>
                 <td>
-                    <a href="{{ route('new.showupdate', $item->id) }}"><button type="button"
+                    <a href="{{ route('contact.showupdate', $item->id) }}"><button type="button"
                             class="btn btn-primary">Edit</button></a>
-                            <a href="{{ route('new.delete', $item->id) }}">
-                                <button type="button" class="btn btn-danger" onclick="if (confirm('Bạn có chắc chắn muốn xóa bản ghi này?')) { window.location.href = '{{ route('new.delete', $item->id) }}'; } else { return false; }">Xóa</button>
-                            </a>
+                    <a href="{{ route('contact.delete', $item->id) }}"><button type="button"
+                            class="btn btn-danger">Xóa</button></a>
                 </td>
             </tr>
         @endforeach
     </tbody>
     <tr>
         <td colspan="10">
-          {{ $new->links('custom.pagination') }}
+          {{ $contact->links('custom.pagination') }}
         </td>
     </tr>
 </table>

@@ -3,9 +3,11 @@
 @section('nav')
 <div class="hero">
     <div class="hero-slide">
-        <div class="img overlay" style="background-image: url('{{asset('asset/images/hero_bg_3.jpg')}}')"></div>
-        <div class="img overlay" style="background-image: url('{{asset('asset/images/hero_bg_2.jpg')}}')"></div>
-        <div class="img overlay" style="background-image: url('{{asset('asset/images/hero_bg_1.jpg')}}')"></div>
+        @foreach ($marketing_banner as $item) 
+        <div class="img overlay" style="background-image: url('{{$item->image ? Storage::url($item->image) : ''}}')"></div>
+        @endforeach
+        {{-- <div class="img overlay" style="background-image: url('{{asset('asset/images/hero_bg_2.jpg')}}')"></div>
+        <div class="img overlay" style="background-image: url('{{asset('asset/images/hero_bg_1.jpg')}}')"></div> --}}
     </div>
 
     <div class="container">
@@ -34,7 +36,7 @@
                 </div>
                 <div class="col-lg-6 text-lg-end">
                     <p>
-                        <a href="#" target="_blank" class="btn btn-primary text-white py-3 px-4">View all properties</a>
+                        <a href="{{route('product')}}"  class="btn btn-primary text-white py-3 px-4">View all properties</a>
                     </p>
                 </div>
             </div>
@@ -42,264 +44,42 @@
                 <div class="col-12">
                     <div class="property-slider-wrap">
                         <div class="property-slider">
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="{{ asset('asset/images/img_1.jpg') }}" alt="Image" class="img-fluid" />
-                                </a>
+                            {{-- dd($real_estate); --}}
+                            @foreach ($real_estate_slide as $item)
+                                <div class="property-item">
+                                    <a href="property-single.html" class="img">
+                                        <img src="{{ $item->image ? '' . Storage::url($item->image) : '' }}" alt="Image"
+                                            class="img-thumbnail" style="width: 200px; height: 200px;" />
+                                    </a>
 
-                                <div class="property-content">
-                                    <div class="price mb-2"><span>$1,291,000</span></div>
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                        <span class="city d-block mb-3">California, USA</span>
+                                    <div class="property-content">
+                                        <div class="price mb-2"><span>{{ $item->price }}</span></div>
+                                        <div>
+                                            <span class="d-block mb-2 text-black-50">{{ $item->name }}</span>
+                                            <span class="city d-block mb-3">{{ $item->address }}</span>
 
-                                        <div class="specs d-flex mb-4">
-                                            <span class="d-block d-flex align-items-center me-3">
-                                                <span class="icon-bed me-2"></span>
-                                                <span class="caption">2 beds</span>
-                                            </span>
-                                            <span class="d-block d-flex align-items-center">
-                                                <span class="icon-bath me-2"></span>
-                                                <span class="caption">2 baths</span>
-                                            </span>
+                                            <div class="specs d-flex mb-4">
+                                                <span class="d-block d-flex align-items-center me-3">
+                                                    <span class="icon-bed me-2"></span>
+                                                    <span class="caption">{{ $item->beds }} beds</span>
+                                                </span>
+                                                <span class="d-block d-flex align-items-center">
+                                                    <span class="icon-bath me-2"></span>
+                                                    <span class="caption">{{ $item->baths }} baths</span>
+                                                </span>
+                                            </div>
+
+                                            <a href="{{ route('property', $item->id) }}"
+                                                class="btn btn-primary py-2 px-3">See details</a>
                                         </div>
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- .item -->
-
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="{{ asset('asset/images/img_2.jpg') }}" alt="Image" class="img-fluid" />
-                                </a>
-
-                                <div class="property-content">
-                                    <div class="price mb-2"><span>$1,291,000</span></div>
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                        <span class="city d-block mb-3">California, USA</span>
-
-                                        <div class="specs d-flex mb-4">
-                                            <span class="d-block d-flex align-items-center me-3">
-                                                <span class="icon-bed me-2"></span>
-                                                <span class="caption">2 beds</span>
-                                            </span>
-                                            <span class="d-block d-flex align-items-center">
-                                                <span class="icon-bath me-2"></span>
-                                                <span class="caption">2 baths</span>
-                                            </span>
-                                        </div>
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .item -->
-
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="{{ asset('asset/images/img_3.jpg') }}" alt="Image" class="img-fluid" />
-                                </a>
-
-                                <div class="property-content">
-                                    <div class="price mb-2"><span>$1,291,000</span></div>
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                        <span class="city d-block mb-3">California, USA</span>
-
-                                        <div class="specs d-flex mb-4">
-                                            <span class="d-block d-flex align-items-center me-3">
-                                                <span class="icon-bed me-2"></span>
-                                                <span class="caption">2 beds</span>
-                                            </span>
-                                            <span class="d-block d-flex align-items-center">
-                                                <span class="icon-bath me-2"></span>
-                                                <span class="caption">2 baths</span>
-                                            </span>
-                                        </div>
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .item -->
-
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="{{ asset('asset/images/img_4.jpg') }}" alt="Image" class="img-fluid" />
-                                </a>
-
-                                <div class="property-content">
-                                    <div class="price mb-2"><span>$1,291,000</span></div>
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                        <span class="city d-block mb-3">California, USA</span>
-
-                                        <div class="specs d-flex mb-4">
-                                            <span class="d-block d-flex align-items-center me-3">
-                                                <span class="icon-bed me-2"></span>
-                                                <span class="caption">2 beds</span>
-                                            </span>
-                                            <span class="d-block d-flex align-items-center">
-                                                <span class="icon-bath me-2"></span>
-                                                <span class="caption">2 baths</span>
-                                            </span>
-                                        </div>
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .item -->
-
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="{{ asset('asset/images/img_5.jpg') }}" alt="Image" class="img-fluid" />
-                                </a>
-
-                                <div class="property-content">
-                                    <div class="price mb-2"><span>$1,291,000</span></div>
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                        <span class="city d-block mb-3">California, USA</span>
-
-                                        <div class="specs d-flex mb-4">
-                                            <span class="d-block d-flex align-items-center me-3">
-                                                <span class="icon-bed me-2"></span>
-                                                <span class="caption">2 beds</span>
-                                            </span>
-                                            <span class="d-block d-flex align-items-center">
-                                                <span class="icon-bath me-2"></span>
-                                                <span class="caption">2 baths</span>
-                                            </span>
-                                        </div>
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .item -->
-
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="{{ asset('asset/images/img_6.jpg') }}" alt="Image" class="img-fluid" />
-                                </a>
-
-                                <div class="property-content">
-                                    <div class="price mb-2"><span>$1,291,000</span></div>
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                        <span class="city d-block mb-3">California, USA</span>
-
-                                        <div class="specs d-flex mb-4">
-                                            <span class="d-block d-flex align-items-center me-3">
-                                                <span class="icon-bed me-2"></span>
-                                                <span class="caption">2 beds</span>
-                                            </span>
-                                            <span class="d-block d-flex align-items-center">
-                                                <span class="icon-bath me-2"></span>
-                                                <span class="caption">2 baths</span>
-                                            </span>
-                                        </div>
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .item -->
-
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="{{ asset('asset/images/img_7.jpg') }}" alt="Image" class="img-fluid" />
-                                </a>
-
-                                <div class="property-content">
-                                    <div class="price mb-2"><span>$1,291,000</span></div>
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                        <span class="city d-block mb-3">California, USA</span>
-
-                                        <div class="specs d-flex mb-4">
-                                            <span class="d-block d-flex align-items-center me-3">
-                                                <span class="icon-bed me-2"></span>
-                                                <span class="caption">2 beds</span>
-                                            </span>
-                                            <span class="d-block d-flex align-items-center">
-                                                <span class="icon-bath me-2"></span>
-                                                <span class="caption">2 baths</span>
-                                            </span>
-                                        </div>
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .item -->
-
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="{{ asset('asset/images/img_8.jpg') }}" alt="Image" class="img-fluid" />
-                                </a>
-
-                                <div class="property-content">
-                                    <div class="price mb-2"><span>$1,291,000</span></div>
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                        <span class="city d-block mb-3">California, USA</span>
-
-                                        <div class="specs d-flex mb-4">
-                                            <span class="d-block d-flex align-items-center me-3">
-                                                <span class="icon-bed me-2"></span>
-                                                <span class="caption">2 beds</span>
-                                            </span>
-                                            <span class="d-block d-flex align-items-center">
-                                                <span class="icon-bath me-2"></span>
-                                                <span class="caption">2 baths</span>
-                                            </span>
-                                        </div>
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .item -->
-
-                            <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="{{ asset('asset/images/img_1.jpg') }}" alt="Image" class="img-fluid" />
-                                </a>
-
-                                <div class="property-content">
-                                    <div class="price mb-2"><span>$1,291,000</span></div>
-                                    <div>
-                                        <span class="d-block mb-2 text-black-50">5232 California Fake, Ave. 21BC</span>
-                                        <span class="city d-block mb-3">California, USA</span>
-
-                                        <div class="specs d-flex mb-4">
-                                            <span class="d-block d-flex align-items-center me-3">
-                                                <span class="icon-bed me-2"></span>
-                                                <span class="caption">2 beds</span>
-                                            </span>
-                                            <span class="d-block d-flex align-items-center">
-                                                <span class="icon-bath me-2"></span>
-                                                <span class="caption">2 baths</span>
-                                            </span>
-                                        </div>
-
-                                        <a href="property-single.html" class="btn btn-primary py-2 px-3">See details</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- .item -->
+                            @endforeach
                         </div>
 
                         <div id="property-nav" class="controls" tabindex="0" aria-label="Carousel Navigation">
-                            <span class="prev" data-controls="prev" aria-controls="property"
-                                tabindex="-1">Prev</span>
-                            <span class="next" data-controls="next" aria-controls="property"
-                                tabindex="-1">Next</span>
+                            <span class="prev" data-controls="prev" aria-controls="property" tabindex="-1">Prev</span>
+                            <span class="next" data-controls="next" aria-controls="property" tabindex="-1">Next</span>
                         </div>
                     </div>
                 </div>
@@ -380,9 +160,12 @@
             </div>
             <div class="testimonial-slider-wrap">
                 <div class="testimonial-slider">
+                    @foreach ($designer as $item)
+                        
+                    
                     <div class="item">
                         <div class="testimonial">
-                            <img src="{{ asset('asset/images/person_1-min.jpg') }}" alt="Image"
+                            <img src="{{$item->image ? Storage::url($item->image) : ''}}" alt="Image"
                                 class="img-fluid rounded-circle w-25 mb-4" />
                             <div class="rate">
                                 <span class="icon-star text-warning"></span>
@@ -391,90 +174,16 @@
                                 <span class="icon-star text-warning"></span>
                                 <span class="icon-star text-warning"></span>
                             </div>
-                            <h3 class="h5 text-primary mb-4">James Smith</h3>
+                            <h3 class="h5 text-primary mb-4">{{$item->name}}</h3>
                             <blockquote>
                                 <p>
-                                    &ldquo;Far far away, behind the word mountains, far from the
-                                    countries Vokalia and Consonantia, there live the blind
-                                    texts. Separated they live in Bookmarksgrove right at the
-                                    coast of the Semantics, a large language ocean.&rdquo;
+                                    &ldquo;{{$item->description}}&rdquo;
                                 </p>
                             </blockquote>
-                            <p class="text-black-50">Designer, Co-founder</p>
+                            <p class="text-black-50">{{$item->phone}}</p>
                         </div>
                     </div>
-
-                    <div class="item">
-                        <div class="testimonial">
-                            <img src="{{ asset('asset/images/person_2-min.jpg') }}" alt="Image"
-                                class="img-fluid rounded-circle w-25 mb-4" />
-                            <div class="rate">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                            </div>
-                            <h3 class="h5 text-primary mb-4">Mike Houston</h3>
-                            <blockquote>
-                                <p>
-                                    &ldquo;Far far away, behind the word mountains, far from the
-                                    countries Vokalia and Consonantia, there live the blind
-                                    texts. Separated they live in Bookmarksgrove right at the
-                                    coast of the Semantics, a large language ocean.&rdquo;
-                                </p>
-                            </blockquote>
-                            <p class="text-black-50">Designer, Co-founder</p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="testimonial">
-                            <img src="{{ asset('asset/images/person_3-min.jpg') }}" alt="Image"
-                                class="img-fluid rounded-circle w-25 mb-4" />
-                            <div class="rate">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                            </div>
-                            <h3 class="h5 text-primary mb-4">Cameron Webster</h3>
-                            <blockquote>
-                                <p>
-                                    &ldquo;Far far away, behind the word mountains, far from the
-                                    countries Vokalia and Consonantia, there live the blind
-                                    texts. Separated they live in Bookmarksgrove right at the
-                                    coast of the Semantics, a large language ocean.&rdquo;
-                                </p>
-                            </blockquote>
-                            <p class="text-black-50">Designer, Co-founder</p>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="testimonial">
-                            <img src="{{ asset('asset/images/person_4-min.jpg') }}" alt="Image"
-                                class="img-fluid rounded-circle w-25 mb-4" />
-                            <div class="rate">
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                                <span class="icon-star text-warning"></span>
-                            </div>
-                            <h3 class="h5 text-primary mb-4">Dave Smith</h3>
-                            <blockquote>
-                                <p>
-                                    &ldquo;Far far away, behind the word mountains, far from the
-                                    countries Vokalia and Consonantia, there live the blind
-                                    texts. Separated they live in Bookmarksgrove right at the
-                                    coast of the Semantics, a large language ocean.&rdquo;
-                                </p>
-                            </blockquote>
-                            <p class="text-black-50">Designer, Co-founder</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

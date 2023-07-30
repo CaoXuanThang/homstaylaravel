@@ -20,13 +20,14 @@ class Real_estatesFactory extends Factory
             'name' => $this->faker->name(),       
             'description'=> $this->faker->text(),
             'price' => $this->faker->numberBetween(100000, 1000000),
-            'image'=> $this->faker->imageUrl(),
+            'image'=> $this->faker->imageUrl('https://pix10.agoda.net/hotelImages/298/2989523/2989523_17101810420057926600.jpg?s=1024x768'),
             'beds'=>$this->faker->numberBetween(1, 10),
             'baths'=>$this->faker->numberBetween(1, 10),
             'address' => $this->faker->address(),
             'real_estate_category_id' => function () {
                 return Real_estate_categories::inRandomOrder()->first()->id;
             },
+            'designer_id' =>$this->faker->numberBetween(1,10),
         ];
     }
 }
