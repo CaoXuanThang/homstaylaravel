@@ -22,7 +22,7 @@ class Marketing_bannerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            
         ];
     }
 }

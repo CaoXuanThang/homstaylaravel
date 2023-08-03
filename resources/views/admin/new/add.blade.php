@@ -52,7 +52,10 @@
                         <label class="form-label">Description</label>
                         <input type="text" class="form-control" name="description">
                     </div>
-                    
+                    <div class="mb-3">
+                        <label class="form-label">Long_Description</label>
+                        <input type="text" class="form-control" name="long_description">
+                    </div>
                     <select class="form-select" aria-label="Default select example" name='news_category_id'>
                         <option selected>Chọn loại tin tức</option>
                         @foreach ($new_category as $item)

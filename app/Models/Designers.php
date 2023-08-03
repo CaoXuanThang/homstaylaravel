@@ -13,14 +13,14 @@ class Designers extends Model
 
     protected $table = 'designers';
     protected $fillable = [
-        'name',
-        'image',
-        'email',
-        'phone',
-        'description',
-        'facebook',
-        'twitter',
-        'instagram'
+            'name',
+            'image',
+            'email',
+            'phone',
+            'description',
+            'facebook',
+            'twitter',
+            'instagram'
     ];
 
     public function real_estates(){

@@ -21,33 +21,60 @@ class New_categoryRequest extends FormRequest
      */
     public function rules(): array
     {
-         $rules = [];
+        $rules = [];
         //lấy ra tên phương thức cần xử lý
         $currentAction = $this->route()->getActionMethod();
-        switch ($this->method()) :
-            case 'POST' :
+
+        switch ($this->method()):
+            case 'GET':
+
+                return $rules;
+                break;
+            case 'POST':
                 switch ($currentAction):
-                    case 'add':
-                        //xây dựng rules validate trong này
+                    case 'create':
+                        // xây dựng rules validate trong này
                         $rules = [
-                            'name'=>'required',
-                            'description'=>'required',
-                            
+                            'name' => 'required|string|max:255',
+                            'description' => 'required|string',
                         ];
-                    break;
+                        return $rules;
+                        break;
+                    case 'update':
+                        // xây dựng rules validate trong này
+                        $rules = [
+                            'name' => 'required|string|max:255',
+                            'description' => 'required|string',
+                        ];
+                        return $rules;
+                        break;
                 endswitch;
                 break;
+                return $rules;
+                break;
+        // case 'PUT':
+        //     return $rules;
+        //     break;
+        // case 'PATCH':
+        //     return $rules;
+        //     break;
+        // case 'DELETE':
+        //     return $rules;
+        //     break;
+        // default:
+        //     return $rules;
+        //     break;
         endswitch;
-        return $rules;
+        return [
+            //
+        ];
     }
     public function messages()
     {
         return [
-            'name.required' => 'Vui lòng nhập tên',
-            'name.string' => 'Vui lòng nhập tên',
-            'name.max' => 'Bạn phải chứa nhiều nhất :max ký tự.',
-            'name.unique' => 'Tên đã tồn tại trong hệ thống.',
-            'description.required' => 'Vui lòng nhập mô tả',
+            'name.required' => 'Trường tên là bắt buộc.',
+            'name.max' => 'Tên không được vượt quá 255 ký tự.',
+            'description.required' => 'Trường mô tả là bắt buộc.',
         ];
     }
 }

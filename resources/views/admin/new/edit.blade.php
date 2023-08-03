@@ -52,6 +52,10 @@
                         <label class="form-label">Description</label>
                         <input type="text" class="form-control" name="description" value="{{$new->description}}">
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Long_Description</label>
+                        <input type="text" class="form-control" name="long_description" value="{{$new->long_description}}">
+                    </div>
                     <div class="mb-3 mt-3">
                         <label  class="form-label">new_category:</label>
                          <select name="news_category_id" class="form-control">
