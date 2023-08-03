@@ -33,7 +33,7 @@
                     <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
                         <li class=""><a href="{{route('home')}}">Home</a></li>
                         <li><a href="{{route('product')}}">Product</a></li>
-                        <li><a href="{{route('product')}}">New</a></li>
+                        <li><a href="{{route('client.new')}}">New</a></li>
                         <li><a href="{{route('about')}}">About</a></li>
                         <li><a href="{{route('client.contact')}}">Contact Us</a></li>
                         <li class="has-children">

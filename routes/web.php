@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\Real_estateController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactclientController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewclientController;
 use App\Http\Controllers\Product_real_estateController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,11 +28,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/search',[HomeController::class,'search'])->name('search');
 Route::get('/product',[Product_real_estateController::class,'index'])->name('product');
 Route::get('/product/{id}',[Product_real_estateController::class,'property'])->name('property');
 Route::get('/about',[AboutController::class,'index'])->name('about');
 Route::get('/contact',[ContactclientController::class,'index'])->name('client.contact');
 Route::post('/contact',[ContactclientController::class,'create'])->name('client.contact.create');
+
+Route::get('/new',[NewclientController::class,'index'])->name('client.new');
+Route::get('/new_detail/{id}',[NewclientController::class,'detail'])->name('client.detail_new');
 
 
 

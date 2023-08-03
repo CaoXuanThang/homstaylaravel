@@ -44,8 +44,8 @@
                                     <div class="property-content">
                                         <div class="price mb-2"><span>{{ $item->price }}</span></div>
                                         <div>
-                                            <span class="d-block mb-2 text-black-50">{{ $item->name }}</span>
-                                            <span class="city d-block mb-3">{{ $item->address }}</span>
+                                            <span class="d-block mb-2 text-black-50">{{ $item->address }}</span>
+                                            <span class="city d-block mb-3">{{ $item->name }}</span>
 
                                             <div class="specs d-flex mb-4">
                                                 <span class="d-block d-flex align-items-center me-3">
@@ -117,5 +117,5 @@
             </div>
         </div>
     </div>
-    </div>
+    
 @endsection

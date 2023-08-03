@@ -14,6 +14,7 @@ class New_categories extends Model
     protected $fillable = [
         'name',
         'description',
+        'image',
     ];
 
     public function news(){

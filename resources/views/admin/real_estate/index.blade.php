@@ -31,6 +31,8 @@
             <th>Description</th>
             <th>Price</th>
             <th>Address</th>
+            <th>Baths</th>
+            <th>Beds</th>
             <th>Estate_category</th>
             <th>Action</th>
         </tr>
@@ -44,6 +46,8 @@
                 <td>{{ $item->description }}</td>
                 <td>{{ $item->price }}</td>
                 <td>{{$item->address}}</td>
+                <td>{{$item->baths}}</td>
+                <td>{{$item->beds}}</td>
                 <td>{{$item->real_estate_category->name}}</td>
                 <td>
                     <a href="{{ route('real_estate.showupdate', $item->id) }}"><button type="button"

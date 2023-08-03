@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Real_estateRequest;
+use App\Models\Designers;
 use App\Models\Real_estate_categories;
 use App\Models\Real_estates;
 use Illuminate\Support\Facades\Storage;
@@ -20,6 +21,7 @@ class Real_estateController extends Controller
         
         $Real_estate = Real_estates::select('*')
         ->whereNull('deleted_at')
+        ->latest()
         ->paginate(5);
         // $real_estate_categories = Real_estate_categories::all();
         return view('admin.real_estate.index', compact('Real_estate'));
@@ -28,7 +30,8 @@ class Real_estateController extends Controller
     public function show()
     {
         $real_estate_categories = Real_estate_categories::all();
-        return view('admin.real_estate.add',compact('real_estate_categories'));
+        $designer = Designers::all();
+        return view('admin.real_estate.add',compact('real_estate_categories','designer'));
     }
 
     public function create(Real_estateRequest $request)
@@ -48,15 +51,11 @@ class Real_estateController extends Controller
     }
     public function showupdate($id)
     {
-        // cách 1
-        // $students = DB::table('studenst')->where('id',$id)->first();
-
-        // cách 2 
         $real_estate = Real_estates::find($id);
         $real_estate_categories = Real_estate_categories::all();
-
+        $designer = Designers::all();
         // dd($students);
-        return view('admin.real_estate.edit', compact('real_estate','real_estate_categories'));
+        return view('admin.real_estate.edit', compact('real_estate','real_estate_categories','designer'));
     }
     public function update(Real_estateRequest $request, $id)
     {

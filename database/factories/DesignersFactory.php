@@ -18,7 +18,7 @@ class DesignersFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'image'=> $this->faker->imageUrl(),
+            'image'=> 'image/1690703377_person_1-min.jpg',
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->phoneNumber(),
             'description' => $this->faker->text(),

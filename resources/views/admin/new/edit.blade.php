@@ -52,16 +52,17 @@
                         <label class="form-label">Description</label>
                         <input type="text" class="form-control" name="description" value="{{$new->description}}">
                     </div>
-                    
-                    <select class="form-select" aria-label="Default select example" name='news_category_id'>
-                        <option selected value="{{$new->new_category_id}}">{{$new->news_category->name}}</option>
-                        @foreach ($news_category as $item)
-                            
-                        <option value="{{ $item->id}}" >{{$item->name}}</option>
-                        @endforeach
-                        
-                      </select>
-                    <button type="submit" class="btn btn-primary">Updaet</button>
+                    <div class="mb-3 mt-3">
+                        <label  class="form-label">new_category:</label>
+                         <select name="news_category_id" class="form-control">
+                             @foreach($news_category as $item)
+                                 <option value="{{$item->id}}"@selected($item->id == $new->news_category_id)>
+                                   {{$item->name}}
+                                 </option>
+                             @endforeach
+                         </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
                     {{-- <a href="{{ route('real_estate.list') }}" class="btn btn-primary">list</a> --}}
                 </form>
             </div>

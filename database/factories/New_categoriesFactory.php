@@ -19,6 +19,7 @@ class New_categoriesFactory extends Factory
         return [
             'name'=> $this->faker->name(),
             'description'=> $this->faker->text(),
+            'image'=>'image/1690305649_img_6.jpg',
         ];
     }
 }

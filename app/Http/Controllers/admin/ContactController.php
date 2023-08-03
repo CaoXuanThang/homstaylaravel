@@ -21,7 +21,7 @@ class ContactController extends Controller
     }
     public function update(ContactRequest $request,$id){
         Contact::where('id', $id)->update($request->except('_token'));
-        return redirect()->route('contact.list')->with('success', 'Update thành công.');;
+        return redirect()->route('contact.list')->with('success', 'Update thành công.');
     }
     public function delete($id)
     {

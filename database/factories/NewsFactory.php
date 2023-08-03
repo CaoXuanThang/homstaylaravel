@@ -22,7 +22,8 @@ class NewsFactory extends Factory
         return [
             'title'=> $this->faker->title(),
             'description' => Str::limit($this->faker->sentence(), 100), // Giới hạn độ dài mô tả thành 200 ký tự
-            'image'=> $this->faker->imageUrl(),
+            'image'=> 'image/1690305649_img_6.jpg',
+            'long_description'=> $this->faker->paragraph(7,true),
             'news_category_id'=> $this->faker->numberBetween(1,10),
         ];
     }

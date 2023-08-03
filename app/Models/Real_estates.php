@@ -20,6 +20,7 @@ class Real_estates extends Model
         'baths',
         'beds',
         'real_estate_category_id',
+        'designer_id',
     ];
 
     public function real_estate_category()

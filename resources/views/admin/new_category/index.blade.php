@@ -27,6 +27,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Image</th>
                 <th>Description</th>
                 <th>Action</th>
             </tr>
@@ -36,6 +37,7 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
+                    <td><img src="{{$item->image ? Storage::url($item->image) : ''}}" alt="" style="width: 100px ;height: 100px;" ></td>
                     <td>{{ $item->description }}</td>
 
                     <td>
