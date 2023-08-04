@@ -1,20 +1,28 @@
 <?php
 
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\admin\ContactController;
-use App\Http\Controllers\admin\DesignerController;
-use App\Http\Controllers\admin\MainController;
-use App\Http\Controllers\admin\Marketing_bannerController;
-use App\Http\Controllers\admin\New_categoryController;
-use App\Http\Controllers\admin\NewController;
-use App\Http\Controllers\admin\Real_estate_categoryController;
-use App\Http\Controllers\admin\Real_estateController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ContactclientController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\NewclientController;
-use App\Http\Controllers\Product_real_estateController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
+
+
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\admin\NewController;
+use App\Http\Controllers\NewclientController;
+use App\Http\Controllers\admin\MainController;
+use App\Http\Controllers\admin\ContactController;
+
+use App\Http\Controllers\ContactclientController;
+use App\Http\Controllers\admin\DesignerController;
+use App\Http\Controllers\admin\Real_estateController;
+use App\Http\Controllers\admin\New_categoryController;
+use App\Http\Controllers\Product_real_estateController;
+use App\Http\Controllers\admin\Marketing_bannerController;
+use App\Http\Controllers\admin\Real_estate_categoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -116,3 +124,8 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'showRegister'])->name('showRegister');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('login/google',[GoogleController::class,'redirectToGoogle'])->name('loginGoogle');
+Route::get('login/google/callback',[GoogleController::class,'handleGoogleCallback']);
+
+

@@ -82,9 +82,12 @@
                             <button class="btn btn-lg btn-primary w-100 fs-6" type="submit">Login</button>
                         </div>
                     </form>
+
+
                     <div class="input-group mb-3">
-                        <button class="btn btn-lg btn-light w-100 fs-6"><img src="{{ asset('img/logo_google.jpg') }}"
-                                style="width:20px" class="me-2"><small>Sign In with Google</small></button>
+                        <a href="{{ route('loginGoogle') }}" class="btn btn-lg btn-light w-100 fs-6">
+                            <img src="{{ asset('img/logo_google.jpg') }}" style="width:20px"class="me-2"><small>Sign In with Google</small>
+                        </a>
                     </div>
                     <div class="row">
                         <small>Don't have account? <a href="{{ route('register') }}">Sign Up</a></small>
