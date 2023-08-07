@@ -14,7 +14,17 @@ class Real_estate_categories extends Model
     protected $fillable = [
         'name',
         'description',
+        'deleted_at'
     ];
+    // protected static function boot()
+    // {
+    //     parent::boot();
+    
+    //     static::deleted(function ($parent) {
+    //         $parent->real_estates()->update(['status' => 'deleted']);
+    //     });
+    // }
+
     public function real_estates()
     {
         return $this->hasMany(RealEstate::class);

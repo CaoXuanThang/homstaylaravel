@@ -20,18 +20,19 @@ class Real_estateController extends Controller
     {
         
         $Real_estate = Real_estates::select('*')
-        ->whereNull('deleted_at')
         ->latest()
         ->paginate(5);
+        $title = 'Real estate ';
         // $real_estate_categories = Real_estate_categories::all();
-        return view('admin.real_estate.index', compact('Real_estate'));
+        return view('admin.real_estate.index', compact('Real_estate','title'));
     }
 
     public function show()
     {
         $real_estate_categories = Real_estate_categories::all();
         $designer = Designers::all();
-        return view('admin.real_estate.add',compact('real_estate_categories','designer'));
+        $title = 'Real estate ';
+        return view('admin.real_estate.add',compact('real_estate_categories','designer','title'));
     }
 
     public function create(Real_estateRequest $request)
@@ -54,8 +55,9 @@ class Real_estateController extends Controller
         $real_estate = Real_estates::find($id);
         $real_estate_categories = Real_estate_categories::all();
         $designer = Designers::all();
+        $title = 'Real estate';
         // dd($students);
-        return view('admin.real_estate.edit', compact('real_estate','real_estate_categories','designer'));
+        return view('admin.real_estate.edit', compact('real_estate','real_estate_categories','designer','title'));
     }
     public function update(Real_estateRequest $request, $id)
     {

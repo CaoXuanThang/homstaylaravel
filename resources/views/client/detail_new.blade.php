@@ -91,9 +91,9 @@
                             @foreach ($similar as $item)
                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                                     <div class="property-item mb-30">
-                                        <a href="property-single.html" class="img">
+                                        <a href="{{ route('client.detail_new',$item->id)}}" class="img">
                                             <img src="{{ $item->image ? '' . Storage::url($item->image) : '' }}"
-                                                alt="Image" class="img-fluid" style="width: 200px; height: 200px;" />
+                                            alt="Image" class="img-fluid" />
                                         </a>
                                         <div class="property-content">
                                             <div>

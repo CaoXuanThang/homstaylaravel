@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class AboutController extends Controller
 {
     public function index(){
+        $title = 'About';
         $designer = Designers::all();
-        return view('client.about',compact('designer'));
+        return view('client.about',compact('designer','title'));
     }
 }

@@ -13,6 +13,7 @@ class Marketing_banners extends Model
     use HasFactory,Notifiable,SoftDeletes;
     protected $table = 'marketing_banners';
     protected $fillable = [
-        'image'
+        'image',
+        'deleted_at'
     ];
 }

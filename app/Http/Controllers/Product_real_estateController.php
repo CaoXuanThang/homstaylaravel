@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class Product_real_estateController extends Controller
 {
     public function index(){
-
+        $title = 'Product';
         $real_estate = Real_estates::select('*')
         ->whereNull('deleted_at')
         ->paginate(6);
@@ -16,10 +16,12 @@ class Product_real_estateController extends Controller
         ->whereNull('deleted_at')
         ->paginate(4);
         // dd($real_estate);
-        return view('client.product_real_estate.index',compact('real_estate','real_estate_slide'));
+
+        return view('client.product_real_estate.index',compact('real_estate','real_estate_slide','title'));
     }
 
     public function property($id){
+        $title = 'Product Detail';
         $property = Real_estates::find($id);
         $real_estate_slide = Real_estates::select('*')
         ->whereNull('deleted_at')
@@ -28,6 +30,6 @@ class Product_real_estateController extends Controller
         ->paginate(4);
         // dd($real_estate);
         // dd($real_estate_slide);
-        return view('client.product_real_estate.property',compact('property','real_estate_slide'));
+        return view('client.product_real_estate.property',compact('property','real_estate_slide','title'));
     }
 }

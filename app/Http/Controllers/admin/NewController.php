@@ -12,13 +12,15 @@ use Illuminate\Support\Facades\Storage;
 class NewController extends Controller
 {
     public function index(){
-        $new = News::select('*')->whereNull('deleted_at')->paginate(5);
-        return view('admin.new.index',compact('new'));
+        $new = News::select('*')->whereNull('deleted_at')->latest()->paginate(5);
+        $title = 'News';
+        return view('admin.new.index',compact('new','title'));
     }
 
     public function show(){
         $new_category = New_categories::all();
-        return view('admin.new.add',compact('new_category'));
+        $title = 'Add News';
+        return view('admin.new.add',compact('new_category','title'));
     }
 
     public function create(NewRequest $request){
@@ -37,8 +39,9 @@ class NewController extends Controller
 
     public function showupdate($id){
         $new = News::find($id);
+        $title = 'News';
         $news_category = New_categories::all();
-        return view('admin.new.edit',compact('new','news_category'));
+        return view('admin.new.edit',compact('new','news_category','title'));
     }
 
     public function update(NewRequest $request, $id){

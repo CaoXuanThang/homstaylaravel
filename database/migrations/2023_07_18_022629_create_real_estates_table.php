@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('baths');
             $table->integer('beds');
             $table->string('address');
-            $table->integer('real_estate_category_id');
+            $table->integer('real_estate_category_id')->nullable();
             $table->integer('designer_id');
             $table->timestamps();
             $table->softDeletes();

@@ -20,7 +20,8 @@ class Designers extends Model
             'description',
             'facebook',
             'twitter',
-            'instagram'
+            'instagram',
+            'deleted_at'
     ];
 
     public function real_estates(){

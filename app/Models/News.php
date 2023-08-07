@@ -17,7 +17,8 @@ class News extends Model
         'description',
         'image',
         'news_category_id',
-        'long_description'
+        'long_description',
+        'deleted_at'
 
     ];
     public function news_category(){

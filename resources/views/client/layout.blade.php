@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('asset/fonts/icomoon/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('asset/css/tiny-slider.css') }}" />
     <link rel="stylesheet" href="{{ asset('asset/css/style.css') }}" />
-    <title></title>
+    <title>{{$title}}</title>
 </head>
 
 <body>

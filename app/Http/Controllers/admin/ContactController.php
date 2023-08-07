@@ -10,14 +10,15 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     public function index(){
-        $contact = Contact::select("*")->paginate(10);
-        
-        return view('admin.contact.index',compact('contact'));
+        $contact = Contact::select("*")->latest()->paginate(10);
+        $title = 'Contact';
+        return view('admin.contact.index',compact('contact','title'));
     }
 
     public function showupdate($id){
         $contact = Contact::find($id);
-        return view('admin.contact.edit',compact('contact'));
+        $title = 'Contact';
+        return view('admin.contact.edit',compact('contact','title'));
     }
     public function update(ContactRequest $request,$id){
         Contact::where('id', $id)->update($request->except('_token'));

@@ -15,6 +15,7 @@ class New_categories extends Model
         'name',
         'description',
         'image',
+        'deleted_at'
     ];
 
     public function news(){

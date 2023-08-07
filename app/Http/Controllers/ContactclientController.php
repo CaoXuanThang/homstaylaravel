@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Session;
 class ContactclientController extends Controller
 {
     public function index(){
-        
-        return view('client.contact');
+        $title = 'Contact';
+        return view('client.contact',compact('title'));
     }
     public function create(ContactRequest $request){
         $contact =Contact::create($request->except('_token'));

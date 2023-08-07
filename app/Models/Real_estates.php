@@ -21,6 +21,7 @@ class Real_estates extends Model
         'beds',
         'real_estate_category_id',
         'designer_id',
+        'deleted_at'
     ];
 
     public function real_estate_category()

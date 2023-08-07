@@ -13,11 +13,13 @@ class Marketing_bannerController extends Controller
 {
     public function index(){
         $marketing_banner = Marketing_banners::all();
-        return view('admin.marketing_banner.index',compact('marketing_banner'));
+        $title = 'Marketing Banner';
+        return view('admin.marketing_banner.index',compact('marketing_banner','title'));
     }
 
     public function show(){
-        return view('admin.marketing_banner.add');
+        $title = 'Marketing Banner';
+        return view('admin.marketing_banner.add',compact('title'));
     }
 
     public function create(Marketing_bannerRequest $request){
@@ -47,8 +49,9 @@ class Marketing_bannerController extends Controller
     }
 
     public function showupdate ($id){
+        $title = 'Marketing Banner';
         $marketing_banner = Marketing_banners::find($id);
-        return view('admin.marketing_banner.edit',compact('marketing_banner'));
+        return view('admin.marketing_banner.edit',compact('marketing_banner','title'));
     }
 
     public function update (Marketing_bannerRequest $request,$id){

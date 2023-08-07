@@ -6,27 +6,32 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Real_estate_categoryRequest;
 use Illuminate\Http\Request;
 use App\Models\Real_estate_categories;
+use App\Models\Real_estates;
+
 // use Illuminate\Support\Facades\Session;
 class Real_estate_categoryController extends Controller
 {
     public function index()
     {
         $real_estate_categories = Real_estate_categories::select('*')
-        ->whereNull('deleted_at')
-        ->paginate(5);
-        return view('admin.real_estate_category.index', compact('real_estate_categories'));
+            ->whereNull('deleted_at')
+            ->latest()
+            ->paginate(5);
+            $title = 'Real estate categories';
+        return view('admin.real_estate_category.index', compact('real_estate_categories','title'));
     }
 
     public function show()
     {
-        return view('admin.real_estate_category.add');
+        $title = 'Real estate categories';
+        return view('admin.real_estate_category.add',compact('title'));
     }
     public function create(Real_estate_categoryRequest $request)
     {
         // dd($request);
         $real_estate_category = new Real_estate_categories();
 
-       
+
         $real_estate_category->name = $request->name;
         $real_estate_category->description = $request->description;
 
@@ -38,37 +43,23 @@ class Real_estate_categoryController extends Controller
     }
     public function showupdate($id)
     {
-        // cách 1
-        // $students = DB::table('studenst')->where('id',$id)->first();
-
-        // cách 2 
+        $title = 'Real estate categories';
         $real_estate_categories = Real_estate_categories::find($id);
-
-
-        // dd($students);
-        return view('admin.real_estate_category.edit', compact('real_estate_categories'));
+        return view('admin.real_estate_category.edit', compact('real_estate_categories','title'));
     }
     public function update(real_estate_categoryRequest $request, $id)
     {
-        // $real_estate_categories = Real_estate_categories::find($id);
         $params =  $request->except('_token');
-        // if ($request->hasFile('image') && $request->file('image')->isValid()) {
-        //     $resultDL = Storage::delete('/public/' . $students->image);
-        //     if ($resultDL) {
-
-        //         $params['image'] = uploadFile('hinh', $request->file('image'));
-        //     }
-        // } else {
-        //     $params['image'] = $students->image;
-        // }
-        // dd($params);
         Real_estate_categories::where('id', $id)->update($params);
-
+        
+        
         return redirect()->route('real_estate_category.list')->with('success', 'Update thành công.');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
+       
         Real_estate_categories::where('id', $id)->delete();
-        return redirect()->route('real_estate_category.list')->with('success', 'Xóa thành công id '.$id);
+        return redirect()->route('real_estate_category.list')->with('success', 'Xóa thành công id ' . $id);
     }
 }

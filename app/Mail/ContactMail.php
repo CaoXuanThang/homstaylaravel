@@ -29,7 +29,7 @@ class ContactMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Mua nhà cho tao',
+            subject: 'Công ty bất động sản Property ',
         );
     }
 

@@ -33,7 +33,7 @@
             <div class="row mb-5 align-items-center">
                 <div class="col-lg-6">
                     <h2 class="font-weight-bold text-primary heading">
-                        Popular Properties
+                        Latest Products
                     </h2>
                 </div>
                 <div class="col-lg-6 text-lg-end">
@@ -50,16 +50,16 @@
                             {{-- dd($real_estate); --}}
                             @foreach ($real_estate_slide as $item)
                                 <div class="property-item">
-                                    <a href="property-single.html" class="img">
+                                    <a href="{{route('property',$item->id)}}" class="img">
                                         <img src="{{ $item->image ? '' . Storage::url($item->image) : '' }}"
-                                            alt="Image" class="img-thumbnail" style="width: 200px; height: 200px;" />
+                                        alt="Image" class="img-fluid" />
                                     </a>
 
                                     <div class="property-content">
-                                        <div class="price mb-2"><span>{{ $item->price }}</span></div>
+                                        <div class="price mb-2"><span>{{ $item->name }}</span></div>
                                         <div>
                                             <span class="d-block mb-2 text-black-50">{{ $item->address }}</span>
-                                            <span class="city d-block mb-3">{{ $item->name }}</span>
+                                            <span class="city d-block mb-3">{{ number_format($item->price) }}</span>
 
                                             <div class="specs d-flex mb-4">
                                                 <span class="d-block d-flex align-items-center me-3">
@@ -116,7 +116,7 @@
             <div class="row mb-5 align-items-center">
                 <div class="col-md-6">
                     <h2 class="font-weight-bold heading text-primary mb-4 mb-md-0">
-                        Customer Says
+                        Designer
                     </h2>
                 </div>
                 <div class="col-md-6 text-md-end">

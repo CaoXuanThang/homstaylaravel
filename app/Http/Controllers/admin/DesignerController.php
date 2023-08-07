@@ -14,17 +14,21 @@ class DesignerController extends Controller
     public function index(){
 
         $designer = Designers::select("*")
+        ->latest()
         ->paginate(5);
-        return view('admin.designer.index',compact('designer'));
+        $title = 'Designer';
+        return view('admin.designer.index',compact('designer','title'));
     }
     public function detail($id){
 
         $designer_detail = Designers::find($id);
-        return view('admin.designer.detail',compact('designer_detail'));
+        $title = 'Designer Detail';
+        return view('admin.designer.detail',compact('designer_detail','title'));
     }
 
     public function show(){
-        return view('admin.designer.add');
+        $title = 'Designer';
+        return view('admin.designer.add',compact('title'));
     }
     public function create(DesignerRequest $request){
         
@@ -41,7 +45,8 @@ class DesignerController extends Controller
 
     public function showupdate($id){
         $designer = Designers::find($id);
-        return view('admin.designer.edit',compact('designer'));
+        $title = 'Designer';
+        return view('admin.designer.edit',compact('designer','title'));
     }
 
     public function update(DesignerRequest $request,$id){

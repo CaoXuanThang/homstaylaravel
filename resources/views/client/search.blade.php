@@ -31,18 +31,20 @@
     <div class="section section-properties">
         <div class="container">
             <div class="row">
+                @if (!$search->isEmpty())
+                <h1 class="mb-2">Sản phẩm tương tự </h1>
                 @foreach ($search as $item)
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                         <div class="property-item mb-30">
-                            <a href="property-single.html" class="img">
+                            <a href="{{route('property',$item->id)}}" class="img">
                                 <img src="{{ $item->image ? '' . Storage::url($item->image) : '' }}" alt="Image"
-                                    class="img-fluid" style="width: 200px; height: 200px;" />
+                                    class="img-fluid"  />
                             </a>
                             <div class="property-content">
-                                <div class="price mb-2"><span>{{ $item->price }}</span></div>
+                                <div class="price mb-2"><span>{{  $item->name}}</span></div>
                                 <div>
                                     <span class="d-block mb-2 text-black-50">{{ $item->address }}</span>
-                                    <span class="city d-block mb-3">{{ $item->name }}</span>
+                                    <span class="city d-block mb-3">{{ number_format($item->price) }}</span>
 
                                     <div class="specs d-flex mb-4">
                                         <span class="d-block d-flex align-items-center me-3">
@@ -63,6 +65,10 @@
                         <!-- .item -->
                     </div>
                 @endforeach
+                @else 
+                    
+                <h1 class="">Không có sản phẩm nào </h1>
+                @endif
             </div>
         </div>
     </div>

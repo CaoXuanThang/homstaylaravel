@@ -16,13 +16,16 @@ class New_categoryController extends Controller
     {
         $new_categories = New_categories::select('*')
         ->whereNull('deleted_at')
+        ->latest()
         ->paginate(5);
-        return view('admin.new_category.index', compact('new_categories'));
+        $title = 'News Categories';
+        return view('admin.new_category.index', compact('new_categories','title'));
     }
 
     public function show()
     {
-        return view('admin.new_category.add');
+        $title = 'Add News categories ';
+        return view('admin.new_category.add',compact('title'));
     }
     public function create(New_categoryRequest $request)
     {   $param = $request->except('_token');
@@ -37,8 +40,9 @@ class New_categoryController extends Controller
     }
     public function showupdate($id)
     {
+        $title = 'News categories';
         $new_category = New_categories::find($id);
-        return view('admin.new_category.edit', compact('new_category'));
+        return view('admin.new_category.edit', compact('new_category','title'));
     }
     public function update(New_categoryRequest $request, $id)
     {

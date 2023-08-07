@@ -91,16 +91,16 @@
                         {{-- dd($real_estate); --}}
                         @foreach ($real_estate_slide as $item)
                             <div class="property-item">
-                                <a href="property-single.html" class="img">
-                                    <img src="{{ $item->image ? '' . Storage::url($item->image) : '' }}" alt="Image"
-                                        class="img-thumbnail" style="width: 200px; height: 200px;" />
+                                <a href="{{route('property',$item->id)}}" class="img">
+                                    <img src="{{ $item->image ? '' . Storage::url($item->image) : '' }}"
+                                    alt="Image" class="img-fluid" />
                                 </a>
 
                                 <div class="property-content">
-                                    <div class="price mb-2"><span>{{ $item->price }}</span></div>
+                                    <div class="price mb-2"><span>{{$item->name }}</span></div>
                                     <div>
-                                        <span class="d-block mb-2 text-black-50">{{ $item->name }}</span>
-                                        <span class="city d-block mb-3">{{ $item->address }}</span>
+                                        <span class="d-block mb-2 text-black-50">{{ $item->address }}</span>
+                                        <span class="city d-block mb-3">{{  number_format($item->price)}}</span>
 
                                         <div class="specs d-flex mb-4">
                                             <span class="d-block d-flex align-items-center me-3">

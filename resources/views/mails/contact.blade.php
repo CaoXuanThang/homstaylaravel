@@ -9,6 +9,6 @@
 <body>
     <h1>Xin chào {{$name}}</h1>
     <h2>Sđt: {{$phone}} </h2>
-    <h2>Hãy gọi cho tao 1900000</h2>
+    <h2>Hãy gọi 1900000 để được tư vấn</h2>
 </body>
 </html>

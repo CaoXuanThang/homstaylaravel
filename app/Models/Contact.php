@@ -17,6 +17,7 @@ class Contact extends Model
         'email',
         'phone',
         'description',
-        'status'
+        'status',
+        'deleted_at'
     ];
 }

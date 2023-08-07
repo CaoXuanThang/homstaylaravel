@@ -14,11 +14,11 @@
                                 class="fa fa-th me-2"></i>Real estate</a>
                         <a href="{{ route('new_category.list') }}" class="nav-item nav-link "><i
                                 class="fa fa-keyboard me-2"></i>NewCategory</a>
-                        <a href="{{ route('new.list') }}" class="nav-item nav-link "><i class="fa fa-table me-2"></i>New</a>
+                        <a href="{{ route('new.list') }}" class="nav-item nav-link "><i class="fa-solid fa-newspaper me-2" style="color: #51371f;"></i> New</a>
                         <a href="{{ route('marketing_banner.list') }}" class="nav-item nav-link active"><i
                                 class="fa fa-chart-bar me-2"></i>marketing Banner</a>
-                                <a href="{{ route('contact.list') }}" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i>Contact</a>
-                                <a href="{{ route('designer.list') }}" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i> Designer</a>
+                                <a href="{{ route('contact.list') }}" class="nav-item nav-link "><i class="fa-solid fa-envelope-open-text me-2" style="color: #01da42;"></i> Contact</a>
+                                <a href="{{ route('designer.list') }}" class="nav-item nav-link "><i class="fa-solid fa-person-rays fa-bounce me-2" style="color: #2562cb;"></i>  Designer</a>
                     </div>
                 </ul>
             </div>
@@ -33,7 +33,7 @@
                     <h6 class="mb-4">Thêm ảnh banner</h6>
                     <form action="{{ route('marketing_banner.create') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                            <label class="col-md-3 col-sm-4 control-label">Ảnh CMND/CCCD</label>
+                            <label class="col-md-3 col-sm-4 control-label">Ảnh</label>
                             <div class="col-md-9 col-sm-8">
                                 <div class="row">
                                     <div class="col-xs-6">
